@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="recipeDetail">
   <div class="col-xs-12">
     <img src="{{recipeDetail.imagePath}}" alt="{{recipeDetail.name}}" class="img-responsive">
   </div>
@@ -13,12 +13,12 @@
     <div class="btn-group" appDropdown>
       <button type="button"
        class="btn btn-primary dropdown-toggle">
-       Manage Recipe <span class="caret"></span>
+       Gérer une recette<span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a (click) = "addToSL(recipeDetail.ingredients)" style="cursor: pointer;">To Shopping List</a></li>
-        <li><a style="cursor: pointer;" [routerLink] = "['edit']">Edit Recipe</a></li>
-        <li><a style="cursor: pointer;">Delete Recipe</a></li>
+        <li><a (click) = "addToSL(recipeDetail.ingredients)" style="cursor: pointer;">Ajouter aux courses</a></li>
+        <li><a style="cursor: pointer;" [routerLink] = "['edit']">Modifier la recette</a></li>
+        <li><a style="cursor: pointer;" (click)="onDelete()">Supprimer la recette</a></li>
       </ul>
     </div>
   </div>
