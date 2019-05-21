@@ -20,7 +20,12 @@
                 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown" appDropdown>
+                <ng-template [ngIf]="!isAuthenticated()">
+                    <li><a routerLink="/signup">S'inscrire</a></li>
+                    <li><a routerLink="/signin">Se connecter</a></li>
+                </ng-template>
+                <li *ngIf="isAuthenticated()"><a style="cursor: pointer;" (click)="onLogout()">Se déconnecter</a></li>
+                <li class="dropdown" appDropdown *ngIf="isAuthenticated()">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administration <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a style="cursor: pointer;" (click)="onSaveRecipes()">Enregistrer</a></li>
